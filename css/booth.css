@@ -1,0 +1,245 @@
+/* ============================================
+   Under The Sea — Photo Booth
+   booth.css  |  camera capture page
+   ============================================ */
+
+/* ── MAIN LAYOUT ──────────────────────────── */
+.main {
+    position: relative; z-index: 10;
+    display: flex; gap: 32px;
+    align-items: flex-start; justify-content: center;
+    padding: 10px 20px 120px;
+    flex-wrap: wrap;
+}
+
+/* ── CAMERA SECTION ───────────────────────── */
+.camera-section {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 16px;
+}
+
+.camera-frame {
+    position: relative;
+    background: rgba(255,255,255,.2);
+    backdrop-filter: blur(8px);
+    border: 3px solid rgba(255,255,255,.6);
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(59,130,180,.3);
+    width: min(460px, 90vw);
+}
+
+/* ocean frame top bar */
+.frame-top {
+    position: absolute; top: 0; left: 0; right: 0; height: 52px;
+    background: linear-gradient(135deg, #a8d8f0, #7ec8e3);
+    border-bottom: 3px solid rgba(255,255,255,.5);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 5;
+}
+.frame-top-title {
+    font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 1.1rem;
+    color: white; letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+
+/* ocean frame bottom bar */
+.frame-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 40px;
+    background: linear-gradient(135deg, var(--sand2), var(--sand));
+    border-top: 3px solid rgba(255,255,255,.4);
+    display: flex; align-items: center;
+    justify-content: flex-end; padding-right: 12px;
+    z-index: 5;
+}
+.frame-credit {
+    font-size: .65rem; color: rgba(91,163,229,.8);
+    font-family: 'Nunito', sans-serif;
+}
+
+/* mini decorations inside frame */
+.frame-deco {
+    position: absolute; z-index: 4; pointer-events: none;
+    animation: floatBob ease-in-out infinite;
+}
+
+#video {
+    display: block; width: 100%;
+    aspect-ratio: 4/3; object-fit: cover;
+    margin-top: 52px; margin-bottom: 40px;
+    transform: scaleX(-1);
+}
+
+/* ── COUNTDOWN OVERLAY ────────────────────── */
+.countdown-overlay {
+    position: absolute; inset: 0; z-index: 15;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,.35); backdrop-filter: blur(2px);
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s;
+}
+.countdown-overlay.active { opacity: 1; pointer-events: all; }
+
+.countdown-number {
+    font-family: 'Baloo 2', cursive; font-weight: 800;
+    font-size: 9rem; color: white;
+    text-shadow: 0 4px 30px rgba(0,0,0,.4);
+    animation: countPop .8s ease;
+}
+
+/* ── CAMERA FLASH ─────────────────────────── */
+.flash {
+    position: fixed; inset: 0; z-index: 100;
+    background: white; opacity: 0; pointer-events: none;
+    transition: opacity .1s;
+}
+.flash.active { opacity: 1; }
+
+/* ── CAPTURE BUTTON ───────────────────────── */
+.capture-btn {
+    font-family: 'Baloo 2', cursive; font-size: 1.15rem; font-weight: 700;
+    background: white; color: var(--text);
+    border: none; border-radius: 50px;
+    padding: 15px 44px; cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    transition: all .2s;
+    display: flex; align-items: center; gap: 10px;
+}
+.capture-btn:hover   { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.18); }
+.capture-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+.status-msg {
+    font-size: .95rem; color: rgba(255,255,255,.9);
+    min-height: 24px; text-align: center;
+}
+
+/* ── PHOTO STRIP PREVIEW ──────────────────── */
+.strip-section {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 16px;
+}
+
+.strip-wrapper {
+    padding: 16px; width: min(220px, 85vw);
+}
+
+.strip-inner { display: flex; flex-direction: column; gap: 8px; }
+
+.strip-slot {
+    width: 100%; aspect-ratio: 4/3;
+    background: rgba(255,255,255,.3);
+    border-radius: 12px;
+    border: 2px dashed rgba(255,255,255,.6);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; overflow: hidden;
+    transition: all .3s;
+}
+.strip-slot img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: 10px;
+}
+
+.strip-bottom-deco {
+    display: flex; justify-content: center; gap: 8px;
+    padding: 10px 0 4px;
+}
+.strip-bottom-deco img { width: 28px; height: 28px; object-fit: contain; }
+
+/* ── NEXT BUTTON ──────────────────────────── */
+.next-btn {
+    font-family: 'Baloo 2', cursive; font-size: 1.05rem; font-weight: 700;
+    background: white; color: var(--text);
+    border: none; border-radius: 50px;
+    padding: 13px 36px; cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,.12);
+    transition: all .2s;
+    opacity: 0; pointer-events: none;
+}
+.next-btn.visible {
+    opacity: 1; pointer-events: all;
+    animation: fadeUp .5s ease;
+}
+.next-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.18); }
+
+/* ── UPLOAD MODE SCREEN ───────────────────── */
+.upload-screen {
+    display: none;
+    flex-direction: column; align-items: center; gap: 20px;
+    width: min(460px, 90vw);
+}
+
+.upload-title {
+    font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 1.3rem;
+    color: white; text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,.15);
+}
+.upload-subtitle {
+    font-size: .9rem; color: rgba(255,255,255,.8);
+    text-align: center; margin-top: -12px;
+}
+
+.upload-slots {
+    display: flex; flex-direction: column; gap: 14px; width: 100%;
+}
+
+.upload-slot {
+    position: relative;
+    width: 100%; height: 160px;
+    background: rgba(255,255,255,.2);
+    backdrop-filter: blur(8px);
+    border: 3px dashed rgba(255,255,255,.6);
+    border-radius: 16px; overflow: hidden;
+    cursor: pointer; transition: all .2s;
+    display: flex; align-items: center; justify-content: center;
+}
+.upload-slot:hover {
+    background: rgba(255,255,255,.32);
+    border-color: rgba(255,255,255,.9);
+    transform: translateY(-2px);
+}
+.upload-slot-label {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: white; pointer-events: none; z-index: 1;
+}
+.upload-slot-label span:first-child { font-size: 2rem; }
+.upload-slot-label span:last-child {
+    font-family: 'Baloo 2', cursive; font-size: .95rem; font-weight: 600;
+    opacity: .9;
+}
+.upload-slot input[type="file"] {
+    position: absolute; inset: 0;
+    opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+#uploadPreview0, #uploadPreview1 {
+    position: absolute; inset: 0; z-index: 2;
+    pointer-events: none;
+}
+
+.upload-status {
+    font-size: .95rem; color: rgba(255,255,255,.9);
+    text-align: center; min-height: 24px;
+}
+
+/* ── PERMISSION SCREEN ────────────────────── */
+.permission-screen {
+    position: fixed; inset: 0; z-index: 50;
+    background: linear-gradient(180deg, #c8eaff 0%, #7ec8e3 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 20px; padding: 40px;
+}
+.permission-screen h2 {
+    font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 2rem;
+    color: white; text-align: center;
+}
+.permission-screen p {
+    color: rgba(255,255,255,.85); text-align: center;
+    max-width: 340px; line-height: 1.6;
+}
+.allow-btn {
+    font-family: 'Baloo 2', cursive; font-size: 1.1rem; font-weight: 700;
+    background: white; color: var(--text);
+    border: none; border-radius: 50px;
+    padding: 14px 40px; cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    transition: all .2s; margin-top: 10px;
+}
+.allow-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.18); }
