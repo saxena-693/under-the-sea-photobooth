@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Under The Sea🌊</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+
+<div class="ocean-bg"></div>
+<div class="light-rays"></div>
+<div class="sand-floor"></div>
+
+<div class="content">
+    <div class="title-wrap">
+        <p class="subtitle">🐚a photo experience</p>
+        <h1>Under <span>The Sea</span></h1>
+        <p class="tagline">dive in and capture the magic✨</p>
+    </div>
+
+    <div class="booth-card glass-card">
+
+        <!-- Photo count picker -->
+        <p class="picker-label">🐠How many photos?</p>
+        <div class="count-picker">
+            <button class="count-btn active" data-count="2" onclick="selectCount(2)">2 Photos</button>
+            <button class="count-btn" data-count="3" onclick="selectCount(3)">3 Photos</button>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="goToBooth(false)">
+                📸Take Photos
+            </button>
+            <button class="btn btn-secondary" onclick="goToBooth(true)">
+                🖼️Upload Photos
+            </button>
+        </div>
+    </div>
+</div>
+
+<p class="credit">made with 💙 by Nandini</p>
+
+<script src="js/assets.js"></script>
+<script src="js/index.js"></script>
+<script>
+    let selectedCount = 2;
+
+    function selectCount(n) {
+        selectedCount = n;
+        document.querySelectorAll(".count-btn").forEach(btn => {
+            btn.classList.toggle("active", parseInt(btn.dataset.count) === n);
+        });
+    }
+
+    function goToBooth(upload) {
+        const url = upload
+            ? `booth.html?upload=true&photos=${selectedCount}`
+            : `booth.html?photos=${selectedCount}`;
+        window.location.href = url;
+    }
+</script>
+</body>
+</html>

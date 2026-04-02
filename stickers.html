@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Under The Sea — Add Stickers ✨</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/stickers.css"/>
+</head>
+<body>
+
+<div class="light-rays"></div>
+<div class="sand-floor"></div>
+<div class="dl-flash" id="dlFlash"></div>
+
+<!-- Nav -->
+<nav>
+    <a class="nav-logo" href="index.html">🌊 Under The Sea</a>
+    <a class="nav-back" href="booth.html">← Retake</a>
+</nav>
+
+<!-- Page Title -->
+<div class="page-title">
+    <h2>Add Stickers! 🐠</h2>
+    <p>drag stickers onto your strip • drag to reposition • click to select</p>
+</div>
+
+<!-- Sticker Tray (populated by stickers.js) -->
+<div class="sticker-tray" id="stickerTray">
+    <div class="tray-label">🐚 sticker collection</div>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+    <!-- Strip Canvas -->
+    <div class="strip-wrapper">
+        <div class="canvas-container" id="canvasContainer">
+            <canvas id="stripCanvas"></canvas>
+            <div id="stickerLayer"></div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <p class="control-label">🐡 sticker size</p>
+        <input type="range" class="size-slider" id="sizeSlider" min="30" max="160" value="70"/>
+
+        <div style="height:8px;"></div>
+
+        <div class="btn-row">
+            <button class="btn btn-secondary" onclick="clearStickers()">🗑 Clear All</button>
+            <button class="btn btn-secondary" onclick="undoLast()">↩ Undo</button>
+        </div>
+
+        <div style="height:8px;"></div>
+
+        <button class="btn btn-primary btn-full" onclick="downloadStrip()">
+            💾 Download Strip
+        </button>
+
+        <button class="btn btn-secondary btn-full" onclick="window.location.href='booth.html'">
+            📸 Retake Photos
+        </button>
+
+        <p class="hint">💡Click a sticker on the strip to select it, then drag to move or click ✕ to delete</p>
+    </div>
+
+</div>
+
+<script src="js/assets.js"></script>
+<script src="js/stickers.js"></script>
+</body>
+</html>

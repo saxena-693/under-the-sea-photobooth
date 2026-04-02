@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Under The Sea — Booth 📸</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/booth.css"/>
+</head>
+<body>
+
+<div class="light-rays"></div>
+<div class="sand-floor"></div>
+<div class="flash" id="flash"></div>
+
+<!-- Permission Screen -->
+<div class="permission-screen" id="permScreen">
+    <div style="font-size:4rem">📸</div>
+    <h2>Ready to dive in? 🌊</h2>
+    <p>We need access to your camera to take your ocean photo strip. No photos are stored anywhere — everything stays on your device!</p>
+    <button class="allow-btn" onclick="startCamera()">Allow Camera Access</button>
+    <a href="index.html" style="color:rgba(255,255,255,.6);font-size:.85rem;margin-top:4px;">← Go back</a>
+</div>
+
+<!-- Nav -->
+<nav>
+    <a class="nav-logo" href="index.html">🌊 Under The Sea</a>
+    <a class="nav-back" href="index.html">← Back</a>
+</nav>
+
+<!-- Main Layout -->
+<div class="main">
+
+    <!-- Camera -->
+    <div class="camera-section">
+        <div class="camera-frame" id="cameraFrame">
+            <div class="frame-top">
+                <span class="frame-top-title">✦ UNDER THE SEA ✦</span>
+            </div>
+            <video id="video" autoplay playsinline muted></video>
+            <div class="countdown-overlay" id="countdownOverlay">
+                <span class="countdown-number" id="countdownNum">3</span>
+            </div>
+            <div class="frame-bottom">
+                <span class="frame-credit">by nandini ✦</span>
+            </div>
+        </div>
+
+        <!-- Upload Mode Screen — slots injected by booth.js -->
+        <div class="upload-screen" id="uploadScreen">
+            <p class="upload-title">🖼️ Upload Your Photos</p>
+            <p class="upload-subtitle" id="uploadSubtitle">Choose photos from your device</p>
+            <div class="upload-slots" id="uploadSlots"></div>
+            <p class="upload-status" id="uploadStatus">🐠 Upload your photos to create your strip!</p>
+        </div>
+
+        <p class="status-msg" id="statusMsg">🐠 Click capture to start your photo strip!</p>
+
+        <button class="capture-btn" id="captureBtn" onclick="startCapture()">
+            📸 Capture
+        </button>
+    </div>
+
+    <!-- Strip Preview — slots injected by booth.js -->
+    <div class="strip-section">
+        <p class="section-label">📸 Your Strip</p>
+        <div class="strip-wrapper glass-card">
+            <div class="strip-inner" id="stripInner"></div>
+            <div class="strip-bottom-deco"></div>
+        </div>
+        <button class="next-btn btn" id="nextBtn" onclick="goToStickers()">
+            Add Stickers ✨
+        </button>
+    </div>
+
+</div>
+
+<canvas id="canvas" style="display:none;"></canvas>
+<script src="js/assets.js"></script>
+<script src="js/booth.js"></script>
+</body>
+</html>
