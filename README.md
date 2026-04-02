@@ -205,8 +205,6 @@ under-the-sea-photobooth/
 🎓B.Tech (Computer Science & Engineering)  
 💡Interested in AI, Full-Stack Development & Software Engineering  
 
-**GitHub:** [https://github.com/saxena-693](https://github.com/saxena-693)
-
 ---
 
 <p align="center">💙If you like this project, don't forget to star the repository⭐</p>
