@@ -12,6 +12,11 @@
 </p>
 
 ---
+## 🌐Live Demo
+
+🚀**Try Under The Sea here:** [https://under-the-sea-photobooth.netlify.app](https://under-the-sea-photobooth.netlify.app)
+
+---
 
 ## 🌟About the Project
 
@@ -132,12 +137,6 @@ Here's everything that was built and debugged across the project:
 <p align="center">
   <img src="./screenshots/download_screen.png" width="800"/>
 </p>
-
----
-
-## 🌐Live Demo
-
-🚀**Try Under The Sea here:** [https://under-the-sea-photobooth.netlify.app](https://under-the-sea-photobooth.netlify.app)
 
 ---
 
