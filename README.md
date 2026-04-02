@@ -79,16 +79,14 @@ Final Strip Download
 ---
 
 ## 📊What Was Built & Fixed
+Here's everything that was built and debugged across the project:
 
-SkillScan generates a structured analysis including:
-
-- 🏠 Landing page cleanup — removed confusing strip preview from the booth card
-- 📸 Camera mirror fix — live preview and saved photo both display correctly
-- 🔢 Dynamic 2 or 3 photo choice — passed via URL param, everything adapts automatically
-- 🐙 Sticker editor fixed for 3 photos — strip height, loops, and footer position all dynamic
-- 🖼️ Upload mode fully working — sticker editor and download button appear correctly
-- 🌟 Favicon added across all 3 pages
-- 🎨 UI polish — ocean blue credit line, Nunito subtitle font, pill toggle picker
+- 🏠Landing page cleanup — removed confusing strip preview from the booth card
+- 📸Camera mirror fix — live preview and saved photo both display correctly
+- 🔢Dynamic 2 or 3 photo choice — passed via URL param, everything adapts automatically
+- 🐙Sticker editor fixed for 3 photos — strip height, loops, and footer position all dynamic
+- 🖼️Upload mode fully working — sticker editor and download button appear correctly
+- 🎨UI polish — ocean blue credit line, Nunito subtitle font, pill toggle picker
 
 **Example fix:**
 
