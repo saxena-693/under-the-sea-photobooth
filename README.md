@@ -135,7 +135,7 @@ Here's everything that was built and debugged across the project:
 </p>
 
 <p align="center">
-  <img src="./screenshots/download_screen.png" width="800"/>
+  <img src="./screenshots/download_screen.png" width="400"/>
 </p>
 
 ---
